@@ -21,7 +21,7 @@
 
 <html>
 <head>
-  <title>{{ APPLICATION_NAME }}</title>
+  <title>{{ GOOGLE_PLUS_POST }}</title>
   <script type="text/javascript">
   (function() {
     var po = document.createElement('script');
@@ -34,7 +34,22 @@
   <!-- JavaScript specific to this application that is not related to API
      calls -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" ></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#signInButton').click(function() {
+    $(this).attr('href','https://accounts.google.com/o/oauth2/auth?scope=' +
+      'https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login&' +
+      'state=generate_a_unique_state_value&' +
+      'redirect_uri=http://localhost:8080&'+
+      'response_type=code&' +
+      'client_id=691061168725-lijtt1dr4vvlp36ilp6iepdtbuier8vi.apps.googleusercontent.com&' +
+      'access_type=offline');
+      return true; // Continue with the new href.
+  });
+});
+</script>
 </head>
+
 <body>
   <div id="gConnect">
     <button class="g-signin"
@@ -47,6 +62,8 @@
         data-cookiepolicy="single_host_origin">
     </button>
   </div>
+  <a href="#" id="signInButton">Sign in with Google</a>
+
   <div id="authOps" style="display:none">
     <h2>User is now signed in to the app using Google+</h2>
     <p>If the user chooses to disconnect, the app must delete all stored

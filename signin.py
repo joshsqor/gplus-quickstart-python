@@ -190,6 +190,19 @@ def people():
     response.headers['Content-Type'] = 'application/json'
     return response
 
+@app.route('/post-control', methods=['GET'])
+def post_control():
+    return "<form action='/post' type='POST'><textarea></textarea> <button type='submit'>post to google plus</button></form>"
+
+@app.route('/post', methods=['GET', 'POST'])
+def post_to_g_plus():
+    #message = request.message
+    #post_to_google(message, SECURITY_GOOGLE_AUTH_STUFF)
+    print 'request'
+    print request
+    print 'request.args'
+    print request.args
+    return 'something happened, check the server' 
 
 if __name__ == '__main__':
   app.debug = True
